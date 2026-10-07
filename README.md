@@ -1,74 +1,98 @@
 # Verilog Voting Machine Project
 
-## Code
+![Verilog](https://img.shields.io/badge/HDL-Verilog%2FSystemVerilog-blue)
+![Simulator](https://img.shields.io/badge/Simulator-Icarus%20Verilog-orange)
+![Platform](https://img.shields.io/badge/Platform-EDA%20Playground-green)
 
-[EDA Playground – Voting Machine](https://www.edaplayground.com/x/Qxvc)
+A simple **Digital Voting Machine designed using Verilog/SystemVerilog HDL**. The project supports voting for three candidates and maintains an individual vote count for each candidate.
 
-## Overview
+## 🔗 EDA Playground
 
-This project implements a simple **Digital Voting Machine using Verilog HDL**. The design supports voting for three candidates and keeps track of the number of votes received by each candidate.
+[**Run the Voting Machine on EDA Playground →**](https://www.edaplayground.com/x/Qxvc)
 
-The voting machine increments the corresponding vote counter whenever a valid vote input is received. A reset signal is provided to clear all vote counts and start a new voting session.
+## 📖 Overview
 
-## Features
+This project demonstrates the design and simulation of a basic **digital voting machine** using HDL.
 
-* Supports voting for **three candidates**.
-* Maintains an independent vote count for each candidate.
-* Increments the selected candidate's vote count when a vote is cast.
-* Provides a **reset** function to clear all vote counts.
-* Includes a Verilog **testbench** for functional verification.
-* Can be simulated using **EDA Playground, Icarus Verilog, ModelSim, or Xilinx Vivado**.
-* Waveforms can be viewed using **GTKWave** or any compatible VCD viewer.
+The system accepts vote inputs for three candidates. Whenever a valid vote is received, the corresponding candidate's vote counter is incremented. A reset signal is provided to clear all vote counts and start a new voting session.
 
-## Project Files
+The project is intended for learning and practicing:
 
-| File                  | Description                                             |
-| --------------------- | ------------------------------------------------------- |
-| `voting_machine.v`    | Main Verilog module containing the voting machine logic |
-| `tb_voting_machine.v` | Testbench used to verify the voting machine             |
+* Verilog/SystemVerilog HDL
+* Digital logic design
+* RTL design
+* Testbench development
+* Simulation and waveform analysis
 
-## Working Principle
+## ✨ Features
 
-The voting machine operates using the following signals:
+* Supports **three candidates**
+* Maintains a separate vote count for each candidate
+* Increments the selected candidate's vote count
+* Provides a reset function to clear all votes
+* Includes a dedicated testbench
+* Simulation compatible with **Icarus Verilog**
+* Can be simulated using **EDA Playground**
+* Waveform can be viewed using **GTKWave**
 
-* **`clk`** – Clock signal used for synchronous operation.
-* **`rst`** – Reset signal that clears all vote counters.
-* **`vote_C1`** – Input pulse to cast a vote for Candidate 1.
-* **`vote_C2`** – Input pulse to cast a vote for Candidate 2.
-* **`vote_C3`** – Input pulse to cast a vote for Candidate 3.
-* **Candidate 1 Count** – Stores the total votes received by Candidate 1.
-* **Candidate 2 Count** – Stores the total votes received by Candidate 2.
-* **Candidate 3 Count** – Stores the total votes received by Candidate 3.
+## 📁 Project Structure
 
-When a candidate's vote input is activated, the corresponding counter is incremented by one on the active clock edge.
+```text
+Voting-Machine-Using-Verilog/
+│
+├── design.sv       # Main voting machine design
+├── testbench.sv    # Testbench for verification
+├── waveform.png    # Simulation waveform
+└── README.md       # Project documentation
+```
 
-When `rst` is activated, all vote counters are reset to zero.
+## ⚙️ Working Principle
 
-## How to Run the Project
+The voting machine uses the following signals:
 
-### 1. Run on EDA Playground
+| Signal            | Description                                |
+| ----------------- | ------------------------------------------ |
+| `clk`             | Clock signal for synchronous operation     |
+| `rst`             | Reset signal that clears all vote counters |
+| `vote_C1`         | Vote input for Candidate 1                 |
+| `vote_C2`         | Vote input for Candidate 2                 |
+| `vote_C3`         | Vote input for Candidate 3                 |
+| Candidate 1 Count | Stores votes received by Candidate 1       |
+| Candidate 2 Count | Stores votes received by Candidate 2       |
+| Candidate 3 Count | Stores votes received by Candidate 3       |
 
-1. Open the [EDA Playground](https://www.edaplayground.com/).
-2. Open the project using the EDA Playground link given above.
-3. Select **Icarus Verilog** as the simulator.
-4. Run the simulation.
-5. Observe the simulation output and waveform.
+### Operation
 
-### 2. Run Locally
+1. The system starts with all vote counters set to zero.
+2. When `rst` is activated, all vote counters are cleared.
+3. A pulse on `vote_C1` increments Candidate 1's vote count.
+4. A pulse on `vote_C2` increments Candidate 2's vote count.
+5. A pulse on `vote_C3` increments Candidate 3's vote count.
+6. Multiple votes can be recorded for each candidate.
+7. The current vote counts can be observed during simulation.
 
-You can simulate the project using **Icarus Verilog**, **ModelSim**, or **Xilinx Vivado**.
+## 🧪 Simulation
+
+### EDA Playground
+
+1. Open the [EDA Playground project](https://www.edaplayground.com/x/Qxvc).
+2. Select **Icarus Verilog** as the simulator.
+3. Run the simulation.
+4. Observe the output and waveform.
+
+### Local Simulation Using Icarus Verilog
 
 Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/verilog-voting-machine.git
-cd verilog-voting-machine
+git clone https://github.com/sushobhitjajoriya9/Voting-Machine-Using-Verilog.git
+cd Voting-Machine-Using-Verilog
 ```
 
-For Icarus Verilog, compile the Verilog files:
+Compile the design and testbench:
 
 ```bash
-iverilog -o voting_machine_sim voting_machine.v tb_voting_machine.v
+iverilog -g2012 -o voting_machine_sim design.sv testbench.sv
 ```
 
 Run the simulation:
@@ -77,68 +101,83 @@ Run the simulation:
 vvp voting_machine_sim
 ```
 
-## Waveform Generation
+## 📊 Waveform
 
-To generate a waveform for analysis, include the following commands in the testbench:
+The simulation waveform shows the clock, reset, vote inputs, and corresponding candidate vote counters.
+
+![Voting Machine Waveform](waveform.png)
+
+### Signals Observed
+
+* `clk` — Clock signal
+* `rst` — Reset signal
+* `vote_C1` — Candidate 1 voting input
+* `vote_C2` — Candidate 2 voting input
+* `vote_C3` — Candidate 3 voting input
+* Candidate vote counters — Updated vote totals
+
+## 🔬 Waveform Generation
+
+If you want to generate a VCD waveform locally, add the following commands to `testbench.sv`:
 
 ```verilog
 $dumpfile("voting_machine.vcd");
-$dumpvars(0, tb_voting_machine);
+$dumpvars(0, testbench);
 ```
 
-Then run the simulation. A `.vcd` waveform file will be generated.
+Then run:
 
-You can open the waveform using **GTKWave**:
+```bash
+iverilog -g2012 -o voting_machine_sim design.sv testbench.sv
+vvp voting_machine_sim
+```
+
+Open the generated waveform using GTKWave:
 
 ```bash
 gtkwave voting_machine.vcd
 ```
 
-## Example Waveform
+## 🛠️ Technologies Used
 
-The waveform allows you to observe the following signals:
-
-* `clk` – Continuous clock signal.
-* `rst` – Reset signal.
-* `vote_C1` – Vote input for Candidate 1.
-* `vote_C2` – Vote input for Candidate 2.
-* `vote_C3` – Vote input for Candidate 3.
-* Candidate vote counters – Display the updated vote totals.
-
-![Voting Machine Waveform](Screenshot 2026-10-07 102452.png)
-
-## Expected Result
-
-During simulation:
-
-1. Initially, the reset signal clears all vote counters.
-2. A pulse on `vote_C1` increments Candidate 1's vote count.
-3. A pulse on `vote_C2` increments Candidate 2's vote count.
-4. A pulse on `vote_C3` increments Candidate 3's vote count.
-5. Multiple votes increase the corresponding candidate's counter.
-6. Activating `rst` clears all vote counts back to zero.
-
-## Applications
-
-This project demonstrates the basic concept of a digital voting system and can be extended for:
-
-* FPGA-based voting machines.
-* Digital election systems.
-* RTL and Verilog learning projects.
-* Hardware design and simulation practice.
-* Candidate selection and vote-counting systems.
-
-## Technologies Used
-
-* **Verilog HDL**
+* **Verilog/SystemVerilog HDL**
 * **EDA Playground**
 * **Icarus Verilog**
 * **GTKWave**
-* **Xilinx Vivado / ModelSim** (optional)
+* **GitHub**
 
-## Author
+## 🚀 Future Improvements
+
+The project can be extended with:
+
+* More than three candidates
+* Seven-segment display output
+* LCD/OLED display
+* Vote validation
+* Voting enable/disable control
+* Winner detection
+* Tie detection
+* FPGA implementation
+* Password or authentication mechanism
+* Total vote counter
+
+## 🎯 Applications
+
+This project can be used as a basic example for:
+
+* Digital voting machine design
+* RTL design practice
+* Verilog/SystemVerilog learning
+* FPGA projects
+* Digital electronics laboratory work
+* HDL simulation and verification
+
+## 👨‍💻 Author
 
 **Sushobhit Jajoriya**
 
+GitHub: [@sushobhitjajoriya9](https://github.com/sushobhitjajoriya9)
 
+---
 
+⭐ If you find this project useful, consider giving the repository a **star**!
