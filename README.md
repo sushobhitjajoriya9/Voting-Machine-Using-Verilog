@@ -105,7 +105,7 @@ The waveform allows you to observe the following signals:
 * `vote_C3` – Vote input for Candidate 3.
 * Candidate vote counters – Display the updated vote totals.
 
-![Voting Machine Waveform](https://private-user-images.githubusercontent.com/183619819/372887726-7230471f-9568-4ae3-99a9-1f1419baa1e0.png)
+![Voting Machine Waveform](Screenshot 2026-10-07 102452.png)
 
 ## Expected Result
 
@@ -140,6 +140,5 @@ This project demonstrates the basic concept of a digital voting system and can b
 
 **Sushobhit Jajoriya**
 
----
 
-⭐ If you find this project useful, consider giving the repository a **star**!
+
